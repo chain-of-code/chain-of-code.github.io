@@ -1,1 +1,596 @@
-<meta http-equiv="Refresh" content="0; url='https://sites.google.com/view/chain-of-code'" />
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <link rel="icon" type="image/png" href="./img/logo.png">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <style>
+        .textarea {
+            width: 500px;
+            min-height: 50px;
+            height: auto;
+            border: 2px solid rgba(63, 63, 63, 1);
+        }
+    </style>
+
+
+    <title>Chain of Code</title>
+
+    <meta name="description" content="RT-X">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <!--FACEBOOK-->
+    <meta property="og:image" content="./img/overview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="2040">
+    <meta property="og:image:height" content="642">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chain-of-code.github.io/" />
+    <meta property="og:title" content="Chain of Code: Reasoning with a Language Model-Augmented Code Emulator" />
+    <meta property="og:description"
+        content="Project page for Chain of Code: Reasoning with a Language Model-Augmented Code Emulator" />
+
+    <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chain of Code: Reasoning with a Language Model-Augmented Code Emulator" />
+    <meta name="twitter:description"
+        content="Project page for Chain of Code: Reasoning with a Language Model-Augmented Code Emulator" />
+    <meta name="twitter:image" content="./img/overview.png" />
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-52J0PM8XKV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-52J0PM8XKV');
+    </script>
+
+
+    <style>
+        .nav-pills {
+            position: relative;
+            display: inline;
+        }
+
+        .author {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+            /* If you want dots under the hoverable text */
+        }
+
+        /* Tooltip text */
+        .author .affiliation {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+            width: 120px;
+            top: 100%;
+            left: 50%;
+            margin-left: -60px;
+            /* Use half of the width (120/2 = 60), to center the tooltip */
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .author:hover .affiliation {
+            visibility: visible;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .video-wrapper {
+            flex: 1;
+            margin-right: 2px;
+            margin-left: 2px;
+            max-width: calc(33.33%px);
+            /* 33.33% for 3 videos per row, subtracting margins */
+            height: auto;
+            text-align: center;
+        }
+
+        .video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            margin-top: 0px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: row;
+            /* Arrange items horizontally */
+            justify-content: space-between;
+            /* Spread items horizontally */
+            align-items: flex-end;
+            /* Align items at the bottom */
+        }
+
+        .image-container .image-wrapper {
+            flex: 1;
+            /* Distribute equal width to both images */
+            padding: 10px;
+            /* Add some spacing between images */
+        }
+
+        .image-container img {
+            max-width: 100%;
+            /* Constrain image width */
+            height: auto;
+            /* Maintain image aspect ratio */
+            display: block;
+            /* Remove extra space below inline images */
+            margin: 0 auto;
+            /* Center the images within their containers */
+        }
+
+        #logo {
+            height: 1em; /* Adjusts the size based on the font size of the h2 element */
+            vertical-align: middle; /* Aligns the logo vertically with the text */
+        }
+
+
+/* Additional CSS for other responsive behavior */
+
+    </style>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <font size="+6">   <img src="img/logo.png" alt="Logo" id="logo">  Chain of Code: </font></br>
+                Reasoning with a Language Model-Augmented Code Emulator
+            </h2>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 text-center">
+                <br>
+               
+                <p>
+                    <span class="author">Chengshu Li<sup>1,2,*</sup></span>,
+                    <span class="author">Jacky Liang<sup>1</sup></span>,
+                    <span class="author">Andy Zeng<sup>1</sup></span>,
+                    <span class="author">Xinyun Chen<sup>1</sup></span>,
+                    <span class="author">Karol Hausman<sup>1,2</sup></span>,
+                    <span class="author">Dorsa Sadigh<sup>1,2</sup></span>,
+                    <span class="author">Sergey Levine<sup>1,3</sup></span>,
+                    <span class="author">Li Fei-Fei<sup>2</sup></span>,
+                    <span class="author">Fei Xia<sup>1,†</sup></span>,
+                    <span class="author">Brian Ichter<sup>1,†</sup></span>
+                </p>
+                
+                <p>
+                    <span class="affiliation"><sup>1</sup>Google DeepMind</span>,
+                    <span class="affiliation"><sup>2</sup>Stanford University</span>,
+                    <span class="affiliation"><sup>3</sup>University of California, Berkeley</span>
+                </p>
+                <p>
+                    <span class="affiliation"><sup>*</sup>Work done as a student researcher at Google DeepMind.</span>
+                    <span class="affiliation"><sup>†</sup>Equal advising.</span>
+                </p>
+
+                <p>
+                    <span class="corresponding-author">Corresponding emails: 
+                        <a href="mailto:chengshu@stanford.edu">chengshu@stanford.edu</a>, 
+                        <a href="mailto:xiafei@google.com">xiafei@google.com</a>, 
+                        <a href="mailto:ichter@google.com">ichter@google.com</a>
+                    </span>                </p>
+
+                <br>
+                <div class="affiliation"></div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+
+
+                    <li>
+                        <a href="paper.pdf">
+                            <image src="img/paper.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code (Coming Soon)</strong></h4>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-8 col-md-offset-2">
+                <p style="text-align:center;">
+                    <video id="v0" width="100%" playsinline="" autoplay="" muted="" loop=""
+                        onclick="setAttribute('controls', 'true');">
+                        <source src="img/teaser.mp4" type="video/mp4">
+                    </video>
+                </p>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    <b>Abstract</b>
+                </h3>
+                <p class="text-justify">
+                    Code provides a general syntactic structure to build complex programs and perform precise
+                    computations when paired with
+                    a code interpreter – we hypothesize that language models (LMs) can leverage code-writing to improve
+                    Chain of Thought
+                    reasoning not only for logic and arithmetic tasks, but also for semantic ones (and in particular,
+                    those that are a mix
+                    of both). For example, consider prompting an LM to write code that counts the number of times it
+                    detects sarcasm in an
+                    essay: the LM may struggle to write an implementation for "detect_sarcasm(string)" that can be
+                    executed by the
+                    interpreter (handling the edge cases would be insurmountable). However, LMs may still produce a
+                    valid solution if they
+                    not only write code, but also selectively "emulate" the interpreter by generating the expected
+                    output of
+                    "detect_sarcasm(string)" and other lines of code that cannot be executed. In this work, we propose
+                    Chain of Code (CoC),
+                    a simple yet surprisingly effective extension that improves LM code-driven reasoning. The key idea
+                    is to encourage LMs
+                    to format semantic sub-tasks in a program as flexible pseudocode that the interpreter can explicitly
+                    catch undefined
+                    behaviors and hand off to simulate with an LM (as an "LMulator"). Experiments demonstrate that Chain
+                    of Code outperforms
+                    Chain of Thought and other baselines across a variety of benchmarks; on BIG-Bench Hard, Chain of
+                    Code achieves 84%, a
+                    gain of 12% over Chain of Thought. CoC scales well with large and small models alike, and broadens
+                    the scope of
+                    reasoning questions that LMs can correctly answer by "thinking in code".
+                </p>
+            </div>
+
+            <div class="row">
+               
+                <div class="col-md-8 col-md-offset-2">
+                    <p style="text-align:center;">
+                        <video id="v0" width="100%" playsinline loop controls>
+                            <source src="img/coc.mp4" type="video/mp4">
+                        </video>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Introduction</b>
+                    </h3>
+
+                    <p>
+                        We propose Chain of Code (CoC), a simple yet surprisingly effective extension that improves Language
+                        Model (LM) code-driven reasoning. It broadens the scope of reasoning questions that LMs can
+                        correctly answer by "thinking in code".
+                    </p>
+                    
+                    <p>
+                    
+                        The key idea is to encourage LMs to format semantic sub-tasks in a program as flexible pseudocode
+                        that the interpreter can explicitly catch undefined behaviors and hand off to simulate with an LM
+                        (as an "LMulator").
+                    </p>
+
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/intro1.png" class="img-responsive">
+                    </p>
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/intro2.png" class="img-responsive">
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Method</b>
+                    </h3>
+
+                    Compared to previous reasoning methods, Chain of Code first (d) generates code or pseudocode to solve the question and
+                    then (e) executes the code with a code interpreter if possible, and with an LMulator (language model emulating code)
+                    otherwise.
+                    
+                    Blue highlight indicates LM generation.
+                    
+                    Red highlight indicates LM generated code being executed by an interpreter.
+                    
+                    Purple highlight indicates an LMulator simulating the code via a program state in green.
+
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/method1.png" class="img-responsive">
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Results on Language Reasoning
+                        </b>
+                    </h3>
+            
+                    <p>
+                        On BIG-Bench Hard (BBH), Chain of Code achieves 84%, a gain of 12% over Chain of Thought and a new state of
+                        the art.
+                        It
+                        further, outperforms the average human raters in 18 out of 23 tasks.
+            
+                    </p>
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/language_reasoning.png" class="img-responsive">
+                    </p>
+                    <p>
+                        Chain of Code performs on par with Chain of Thought for the NLP subset of BBH, and outperforms even the best
+                        human
+                        raters for the algorithmic subset of BBH.
+                    </p>
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/language_reasoning_2.png" class="img-responsive">
+                    </p>
+            
+                    <p>
+                        Chain of Code (Interweave) based on text-davinci-003 even outperforms a much larger instruction tuned model
+                        gpt-4,
+                        which
+                        is instructed to write code to solve the reasoning problems, if it's helpful to do so.
+                    </p>
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/language_reasoning_3.png" class="img-responsive">
+                    </p>
+            
+            
+                </div>
+            
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Robotics Applications
+                        </b>
+                    </h3>
+                    <p>
+                        Chain of Code is well fit for solving robotics tasks because they require both semantic and algorithmic
+                        reasoning.
+            
+                        They also involve interfacing with other APIs through code (e.g., control or perception APIs) and with users
+                        through
+                        natural language.
+            
+                        Red highlight indicates LM generated code being executed by an interpreter.
+            
+                        Purple highlight indicates an LMulator simulating the code.
+                    </p>
+            
+                </div>
+            </div>
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-4 col-md-offset-2">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/robot1.png" class="img-responsive">
+                    </p>
+                </div>
+            
+                <div class="col-md-4">
+                    <p style="text-align:center;">
+                        <video id="v0" width="100%" playsinline="" autoplay="" muted="" loop=""
+                            onclick="setAttribute('controls', 'true');">
+                            <source src="img/sorting_trash_cropped.mp4" type="video/mp4">
+                        </video>
+                    </p>
+                </div>
+            </div>
+            
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-4 col-md-offset-2">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/robot2.png" class="img-responsive">
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <p style="text-align:center;">
+                        <video id="v0" width="100%" playsinline="" autoplay="" muted="" loop=""
+                            onclick="setAttribute('controls', 'true');">
+                            <source src="img/cook_tomato_egg_Chinese_cropped.mp4" type="video/mp4">
+                        </video>
+                    </p>
+                </div>
+
+                
+            </div>
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-4 col-md-offset-2">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/robot3.png" class="img-responsive">
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <p style="text-align:center;">
+                        <video id="v0" width="100%" playsinline="" autoplay="" muted="" loop=""
+                            onclick="setAttribute('controls', 'true');">
+                            <source src="img/season_steak_cropped.mp4" type="video/mp4">
+                        </video>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Example Model Outputs for Language Reasoning 
+                        </b>
+                    </h3>
+                    <p>
+                        Example model outputs for some of the most challenging BBH tasks that require both semantic and algorithm reasoning.
+                        
+                        Red highlight indicates LM generated code being executed by an interpreter.
+                        
+                        Purple highlight indicates an LMulator simulating the code via a program state in green.
+
+                    </p>
+            
+                </div>
+
+            </div>
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-4 col-md-offset-2">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/example1.png" class="img-responsive">
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/example2.png" class="img-responsive">
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-4 col-md-offset-2">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/example3.png" class="img-responsive">
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/example4.png" class="img-responsive">
+                    </p>
+                </div>
+            
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Ablation Studies
+                        </b>
+                    </h3>
+                    <p>
+                        With careful ablation studies, we confirm all design choices of Chain of Code is essential for its good performance.
+
+                    </p>
+
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/ablation.png" class="img-responsive">
+                    </p>
+
+
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/ablation2.png" class="img-responsive">
+                    </p>
+            
+                </div>
+            
+            </div>
+
+            <div class="row">
+            
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        <b>Scaling
+                        </b>
+                    </h3>
+                    <p>
+                        Unlike Chain of Thought, which only emerges for large models, Chain of Code scales well with large and small
+                        models alike.
+            
+                    </p>
+
+                    <p style="text-align:center;">
+                        <img data-enlargable src="img/scaling.png" class="img-responsive">
+                    </p>
+            
+                </div>
+        
+            </div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3>
+            Citation
+        </h3>
+
+            <textarea id="bibtex" class="form-control" readonly>
+@misc{li2023chain,
+    title={Chain of Code: Reasoning with a Language Model-Augmented Code Emulator}, 
+    author={Chengshu Li and Jacky Liang and Andy Zeng and Xinyun Chen and Karol Hausman and Dorsa Sadigh and Sergey Levine and Li Fei-Fei and Fei Xia and Brian Ichter},
+    year={2023},
+    eprint={2312.04474},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}</textarea>
+        </div>
+
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
+        </p>
+    
+    </div>
+
+
+
+</body>
+
+</html>
