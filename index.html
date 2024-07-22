@@ -211,7 +211,13 @@
                         <a href="mailto:chengshu@stanford.edu">chengshu@stanford.edu</a>, 
                         <a href="mailto:xiafei@google.com">xiafei@google.com</a>, 
                         <a href="mailto:ichter@google.com">ichter@google.com</a>
-                    </span>                </p>
+                    </span>
+                </p>
+
+                <p>
+                    <span class="conference"><b>ICML 2024 Oral</b></span>
+                </p>
+
 
                 <br>
                 <div class="affiliation"></div>
@@ -231,14 +237,18 @@
                                 <h4><strong>Paper</strong></h4>
                         </a>
                     </li>
-
                     <li>
                         <a href="http://colab.research.google.com/github/google-research/google-research/blob/master/code_as_policies/coc_demo.ipynb">
+                            <image src="img/colab.png" height="60px">
+                                <h4><strong>Demo</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://colab.research.google.com/drive/1_i9-LeAZyWoYNt0Oejej-JU0xhHahVFj?usp=sharing">
                             <image src="img/github.png" height="60px">
                                 <h4><strong>Code</strong></h4>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -572,13 +582,20 @@
         </h3>
 
             <textarea id="bibtex" class="form-control" readonly>
-@misc{li2023chain,
-    title={Chain of Code: Reasoning with a Language Model-Augmented Code Emulator}, 
-    author={Chengshu Li and Jacky Liang and Andy Zeng and Xinyun Chen and Karol Hausman and Dorsa Sadigh and Sergey Levine and Li Fei-Fei and Fei Xia and Brian Ichter},
-    year={2023},
-    eprint={2312.04474},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
+@InProceedings{pmlr-v235-li24ar,
+  title = 	 {Chain of Code: Reasoning with a Language Model-Augmented Code Emulator},
+  author =       {Li, Chengshu and Liang, Jacky and Zeng, Andy and Chen, Xinyun and Hausman, Karol and Sadigh, Dorsa and Levine, Sergey and Fei-Fei, Li and Xia, Fei and Ichter, Brian},
+  booktitle = 	 {Proceedings of the 41st International Conference on Machine Learning},
+  pages = 	 {28259--28277},
+  year = 	 {2024},
+  editor = 	 {Salakhutdinov, Ruslan and Kolter, Zico and Heller, Katherine and Weller, Adrian and Oliver, Nuria and Scarlett, Jonathan and Berkenkamp, Felix},
+  volume = 	 {235},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {21--27 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v235/main/assets/li24ar/li24ar.pdf},
+  url = 	 {https://proceedings.mlr.press/v235/li24ar.html},
+  abstract = 	 {Code provides a general syntactic structure to build complex programs and perform precise computations when paired with a code interpreter – we hypothesize that language models (LMs) can leverage code-writing to improve Chain of Thought reasoning not only for logic and arithmetic tasks, but also for semantic ones (and in particular, those that are a mix of both). For example, consider prompting an LM to write code that counts the number of times it detects sarcasm in an essay: the LM may struggle to write an implementation for "detect_sarcasm(string)" that can be executed by the interpreter (handling the edge cases would be insurmountable). However, LMs may still produce a valid solution if they not only write code, but also selectively "emulate" the interpreter by generating the expected output of "detect_sarcasm(string)". In this work, we propose Chain of Code (CoC), a simple yet surprisingly effective extension that improves LM code-driven reasoning. The key idea is to encourage LMs to format semantic sub-tasks in a program as flexible pseudocode that the interpreter can explicitly catch undefined behaviors and hand off to simulate with an LM (as an "LMulator"). Experiments demonstrate that Chain of Code outperforms Chain of Thought and other baselines across a variety of benchmarks; on BIG-Bench Hard, Chain of Code achieves 84%, a gain of 12% over Chain of Thought. In a nutshell, CoC broadens the scope of reasoning questions that LMs can answer by "thinking in code".}
 }</textarea>
         </div>
 
